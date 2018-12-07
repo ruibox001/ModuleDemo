@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <title>UIWebView调用原生组件范例</title>
+        <style>
+            .divcss{ line-height:50px}
+            </style>
+</head>
+<body>
+    
+    <div id="msg2" align="center" class="divcss">
+        <p id="countent"></p>
+    </div>
+    
+    <div id="devicebtn" align="center" class="divcss">
+        <a href="javascript:void(0);" onclick="callDevice()">获取设备组件信息</a>
+    </div>
+    <div id="btn" align="center" class="divcss"></div>
+    <div id="userbtn" align="center" class="divcss">
+        <a href="javascript:void(0);" onclick="callUser()">获取用户组件信息</a>
+    </div>
+    
+    <script>
+        
+    function callDevice() {
+        UIControl.postMessage
+            ({"name":"ModuleDevice.moduleDeviceInfoCbFunc","cbFunc": "deviceCallBackFunc","params":{'from':'uiwebView','dec':'想获取设备信息'}});
+    }
+
+    function callUser() {
+        UIControl.postMessage
+            ({"name":"ModuleUser.moduleUserInfoCbFunc","cbFunc": "userCallBackFunc","params":{'from':'uiwebView','dec':'想获取用户信息'}});
+    }
+    
+    //设备回调方法
+    function deviceCallBackFunc(data) {
+        setTimeout(function(){
+            alert(data);
+        },100);
+    }
+    
+    //用户回调方法
+    function userCallBackFunc(data) {
+        setTimeout(function(){
+            alert(data);
+        },100);
+    }
+
+    </script>
+</body>
+</html>
