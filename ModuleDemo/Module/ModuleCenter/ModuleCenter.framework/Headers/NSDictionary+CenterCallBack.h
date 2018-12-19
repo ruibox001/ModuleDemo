@@ -20,6 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
  @param code 处理成功失败的code
  */
 - (void)cbWithData:(nullable NSDictionary *)data msg:(nullable NSString *)msg code:(nullable NSString *)code;
+    
+
+/**
+ 清除缓存：本地调用完成后把自己调用的类从缓存中清除
+ */
+- (void)clearMySelfCache;
 
 @end
 

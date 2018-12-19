@@ -25,5 +25,10 @@
     NSString *name = @"王声远";
     return @{@"name":name,@"age":age};
 }
-
+    
+- (void)dealloc
+{
+    NSLog(@"dealloc: %@",self);
+}
+    
 @end

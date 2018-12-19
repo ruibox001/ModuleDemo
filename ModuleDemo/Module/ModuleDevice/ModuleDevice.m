@@ -17,13 +17,20 @@
     NSString *appName = @"APP名称";
     NSDictionary *data = @{@"appName":appName,@"appVersion":version};
     [dict cbWithData:data msg:@"获取APP信息成功" code:@"100"];
+    [dict clearMySelfCache]; //业务结束后移除对象
 }
 
 - (NSDictionary *) moduleDeviceInfoReturn:(NSDictionary *)dict {
     NSLog(@"返回值调用设备信息参数：%@",dict);
     NSString *version = @"1.0.0";
     NSString *appName = @"APP名称";
+    [dict clearMySelfCache]; //业务结束后移除对象
     return @{@"appName":appName,@"appVersion":version};
 }
 
+- (void)dealloc
+{
+    NSLog(@"dealloc: %@",self);
+}
+    
 @end
